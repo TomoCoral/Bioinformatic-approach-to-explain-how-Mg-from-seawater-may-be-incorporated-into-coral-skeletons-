@@ -1,0 +1,48 @@
+Supplementary File A. 
+Code used for Table 1
+
+*Collect the data from REEFGENOMICS (http://reefgenomics.org) webpage. 
+curl -O http://comparative.reefgenomics.org/datasets.html 
+
+*Collect five Acropora sp. and three Porites sp. data 
+curl -O http://comparative.reefgenomics.org/faa/Coral/ Acropora_digitifera_peptides_100.final.clstr.faa 
+
+curl -O http://comparative.reefgenomics.org/faa/Coral/ Acropora_hyacinthus_peptides_100.final.clstr.faa
+
+curl -O http://comparative.reefgenomics.org/faa/Coral/ Acropora_millepora_peptides_100.final.clstr.faa 
+
+curl -O http://comparative.reefgenomics.org/faa/Coral/ Acropora_palmata_peptides_100.final.clstr.faa 
+
+curl -O http://comparative.reefgenomics.org/faa/Coral/ Acropora_tenuis_peptides_100.final.clstr.faa 
+
+curl -O http://comparative.reefgenomics.org/faa/Coral/ Porites_lobata_peptides_100.final.clstr.faa 
+
+curl -O http://comparative.reefgenomics.org/faa/Coral/
+Porites_asutaliensis_peptides_100.final.clstr.faa 
+
+curl -O http://comparative.reefgenomics.org/faa/Coral/
+Porites__peptides_100.final.clstr.faa 
+
+*Download BLAST at home directory 
+curl -O ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.15.0+-x64- macosx.tar.gz tar -zxvfncbi-blast-2.15.0+-x64-macosx.tar.gz 
+
+*Create BLAST database for five Acropora sp. and three Porites sp. 
+makeblastdb -in Acropora_digitifera_peptides_100.final.clstr.faa -dbtype prot -hash_index makeblastdb -in Acropora_hyacinthus_peptides_100.final.clstr.faa -dbtype prot -hash_index makeblastdb -in_Acropora_millepora_peptides_100.final.clstr.faa -dbtype prot -hash_index makeblastdb -in_Acropora_palmata_peptides_100.final.clstr.faa -dbtype prot -hash_index makeblastdb -in Acropora_tenuis_peptides_100.final.clstr.faa -dbtype prot -hash_index 
+makeblastdb -in_Porites_lobata_peptides_100.final.clstr.faa -dbtype prot -hash_index makeblastdb -in_Porites_asuraliensis_peptides_100.final.clstr.faa -dbtype prot -hash_index makeblastdb -in_Porites_astreoides_peptides_100.final.clstr.faa -dbtype prot -hash_index
+*Conduct BLASTP with different coral datasets using different queries (Acropora digitifera, Oryzias latipes, Pongo abelii, and Homo sapience Mg transporter)
+blastp -db ~/db1/Acropora_digitifera_peptides_100.final.clstr.faa -query ~/query1/Seq1.txt -num_alignments 5 -evalue 1e-10 -out ~/out1/Result1.txt 
+
+blastp -db ~/db1/Acropora_hyacinthus_peptides_100.final.clstr.faa -query ~/query1/Seq1.txt -num_alignments 5 -evalue 1e-10 -out ~/out1/Result1.txt 
+
+blastp -db ~/db1/Acropora_millepora_peptides_100.final.clstr.faa -query ~/query1/Seq1.txt -num_alignments 5 -evalue 1e-10 -out ~/out1/Result1.txt 
+
+blastp -db ~/db1/Acropora_palmata_peptides_100.final.clstr.faa -query ~/query1/Seq1.txt -num_alignments 5 -evalue 1e-10 -out ~/out1/Result1.txt 
+
+blastp -db ~/db1/Acropora_tenuis_peptides_100.final.clstr.faa -query ~/query1/Seq1.txt -num_alignments 5 -evalue 1e-10 -out ~/out1/Result1.txt 
+
+blastp -db ~/db1/Porites_lobata_peptides_100.final.clstr.faa -query ~/query1/Seq1.txt -num_alignments 5 -evalue 1e-10 -out ~/out1/Result1.txt 
+
+blastp -db ~/db1/Porites_australiensis_peptides_100.final.clstr.faa -query ~/query1/Seq1.txt -num_alignments 5 -evalue 1e-10 -out ~/out1/Result1.txt 
+
+blastp -db ~/db1/Porites_astreoides_peptides_100.final.clstr.faa -query ~/query1/Seq1.txt -num_alignments 5 -evalue 1e-10 -out ~/out1/Result1.txt 
+
